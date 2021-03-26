@@ -1,27 +1,26 @@
 # テーブル設計
 
 ## users テーブル
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| nickname    | string | null: false |
-| email       | string | null: false |
-| password    | string | null: false |
-| family_name | string | null: false |
-| first_name  | string | null: false |
-| read_family | string | null: false |
-| read_first  | string | null: false |
-| birth       | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| family_name        | string | null: false               |
+| first_name         | string | null: false               |
+| read_family        | string | null: false               |
+| read_first         | string | null: false               |
+| birth              | date   | null: false               | 
 
 ### Association
 
  has_many :products
+ has_many :purchases
  has_one :destination
- has_one :card 
 
 ## products テーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| image               | string     | null: false                    |
 | name                | string     | null: false                    |
 | description         | text       | null: false                    |
 | price               | integer    | null: false                    |
@@ -36,6 +35,7 @@
 ### Association
 
  belongs_to :user
+ has_one :purchase
  belongs_to_active_hash :category
  belongs_to_active_hash :status
  belongs_to_active_hash :cost
@@ -43,18 +43,20 @@
  belongs_to_active_hash :days
 
 
-## card テーブル
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| user_id     | integer | null: false, foreign_key: true |
-| customer_id | string  | null: false　　　　　　　　　　　　|
-| card_id     | string  | null: false　　　　　　　　　　　　|
+## Purchases テーブル
+| Column         | Type    | Options                        |
+| -------------- | ------- | ------------------------------ |
+| product_id     | integer | null: false, foreign_key: true |
+| user_id        | integer | null: false, foreign_key: true |
+| destination_id | integer | null: false, foreign_key: true |
 
 ### Association
 
 belongs_to :user
+belongs_to :product
+belongs_to :destination
 
-## destination テーブル
+## destinations テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -64,9 +66,9 @@ belongs_to :user
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
 | phone_number     | string     | null: false                    |
-| user_id          | integer    | null: false, foreign_key: true |
+| purchase_id      | integer    | null: false, foreign_key: true |
 
 ### Association
 
-belongs_to :user
+has_one :purchase
 has_one_active_hash :prefectures
