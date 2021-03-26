@@ -27,7 +27,7 @@
 | category_id         | integer    | null: false                    |
 | status_id           | integer    | null: false                    |
 | cost_id             | integer    | null: false                    |
-| prefectures_id      | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | day_id              | integer    | null: false                    |
 | user_id             | integer    | null: false, foreign_key: true | 
 
@@ -39,7 +39,7 @@
  belongs_to_active_hash :category
  belongs_to_active_hash :status
  belongs_to_active_hash :cost
- belongs_to_active_hash :prefectures
+ belongs_to_active_hash :prefecture
  belongs_to_active_hash :days
 
 
@@ -60,7 +60,7 @@ has_one :destination
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |
-| prefectures_id   | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
@@ -70,4 +70,4 @@ has_one :destination
 ### Association
 
 belongs_to :purchase
-has_one_active_hash :prefectures
+has_one_active_hash :prefecture
