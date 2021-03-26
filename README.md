@@ -16,7 +16,6 @@
 
  has_many :products
  has_many :purchases
- has_one :destination
 
 ## products テーブル
 | Column              | Type       | Options                        |
@@ -36,12 +35,6 @@
 
  belongs_to :user
  has_one :purchase
- belongs_to_active_hash :category
- belongs_to_active_hash :status
- belongs_to_active_hash :cost
- belongs_to_active_hash :prefecture
- belongs_to_active_hash :days
-
 
 ## Purchases テーブル
 | Column         | Type    | Options                        |
@@ -70,4 +63,3 @@ has_one :destination
 ### Association
 
 belongs_to :purchase
-has_one_active_hash :prefecture
