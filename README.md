@@ -24,11 +24,11 @@
 | name                | string     | null: false                    |
 | description         | text       | null: false                    |
 | price               | integer    | null: false                    |
-| category            | integer    | null: false                    |
-| status              | integer    | null: false                    |
-| cost                | integer    | null: false                    |
-| prefectures         | integer    | null: false                    |
-| days                | integer    | null: false                    |
+| category_id         | integer    | null: false                    |
+| status_id           | integer    | null: false                    |
+| cost_id             | integer    | null: false                    |
+| prefectures_id      | integer    | null: false                    |
+| day_id              | integer    | null: false                    |
 | user_id             | integer    | null: false, foreign_key: true | 
 
 
@@ -48,20 +48,19 @@
 | -------------- | ------- | ------------------------------ |
 | product_id     | integer | null: false, foreign_key: true |
 | user_id        | integer | null: false, foreign_key: true |
-| destination_id | integer | null: false, foreign_key: true |
 
 ### Association
 
 belongs_to :user
 belongs_to :product
-belongs_to :destination
+has_one :destination
 
 ## destinations テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |
-| prefectures      | string     | null: false                    |
+| prefectures_id   | integer    | null: false                    |
 | city             | string     | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
@@ -70,5 +69,5 @@ belongs_to :destination
 
 ### Association
 
-has_one :purchase
+belongs_to :purchase
 has_one_active_hash :prefectures
