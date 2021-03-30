@@ -3,7 +3,7 @@ FactoryBot.define do
     nickname              {"miho"}
     email                 {"sample@gmail.com"}
     password              {"miho1234"}
-    encrypted_password    {"miho1234"}
+    password_confirmation {"miho1234"}
     family_name           {"松島"}
     read_family           {"マツシマ"}
     first_name            {"美穂"}
