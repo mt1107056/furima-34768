@@ -6,11 +6,16 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :family_name, format: {with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters"}
-    validates :first_name,  format: {with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters"}
-    validates :read_family, format: {with: /\A[ァ-ヶー－]+\z/, message: "Full-width katakana characters"}
-    validates :read_first,  format: {with: /\A[ァ-ヶー－]+\z/, message: "Full-width katakana characters"}
     validates :birth
+
+    with_options format: {with: /\A[ぁ-んァ-ン一-龥々ー]+\z/, message: "Full-width characters"} do
+    validates :family_name
+    validates :first_name
+    end
+    with_options format: {with: /\A[ァ-ヶー－]+\z/, message: "Full-width katakana characters"} do
+    validates :read_family
+    validates :read_first
+    end
   end
     validates :password,    format: {with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/, message: "Include both letters and numbers"}
 end
