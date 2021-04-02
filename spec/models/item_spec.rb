@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
   describe '商品出品登録' do
     context '商品出品ができる時' do
     end
- 
+
     context '商品出品ができない時' do
       it 'nameが空では登録できない' do
         @item.name = ''
@@ -35,51 +35,51 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Price can't be blank"
       end
-      it "priceが299以下だと登録できないこと" do
+      it 'priceが299以下だと登録できないこと' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not included in the list"
+        expect(@item.errors.full_messages).to include 'Price is not included in the list'
       end
-      it "priceが10000000だと登録できないこと" do
+      it 'priceが10000000だと登録できないこと' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not included in the list"
+        expect(@item.errors.full_messages).to include 'Price is not included in the list'
       end
-      it "priceが全角数字だと登録できないこと" do
+      it 'priceが全角数字だと登録できないこと' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not included in the list"
+        expect(@item.errors.full_messages).to include 'Price is not included in the list'
       end
       it 'category_idが1(---)では登録できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category Select"
+        expect(@item.errors.full_messages).to include 'Category Select'
       end
       it 'status_idが1(---)では登録できない' do
         @item.status_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Status Select"
+        expect(@item.errors.full_messages).to include 'Status Select'
       end
       it 'cost_idが1(---)では登録できない' do
         @item.cost_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Cost Select"
+        expect(@item.errors.full_messages).to include 'Cost Select'
       end
       it 'prefecture_idが1(---)では登録できない' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Prefecture Select"
+        expect(@item.errors.full_messages).to include 'Prefecture Select'
       end
       it 'delivery_idが1(---)では登録できない' do
         @item.delivery_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Delivery Select"
+        expect(@item.errors.full_messages).to include 'Delivery Select'
       end
       it '紐づくユーザーが存在しないと登録できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "User must exist"
+        expect(@item.errors.full_messages).to include 'User must exist'
       end
     end
-  end    
+  end
 end
