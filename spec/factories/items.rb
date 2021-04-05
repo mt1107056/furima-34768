@@ -7,10 +7,11 @@ FactoryBot.define do
     name              { 'kamera' }
     description       { 'aaa' }
     price             { 1000 }
-    category_id       { 1 }
-    status_id         { 1 }
-    cost_id           { 1 }
-    prefecture_id     { 1 }
-    delivery_id       { 1 }
+    category_id       { 2 }
+    status_id         { 2 }
+    cost_id           { 2 }
+    prefecture_id     { 2 }
+    delivery_id       { 2 }
+    user_id           { 2 }
   end
 end
